@@ -4,7 +4,7 @@ LiquidCrystal_I2C lcd(0x27,16,2);  // set the LCD address to 0x27 for a 16 chars
 int n=0;
 int sensor=A0;
 int sensorRead=0;
-unsigned long start_time,t,time_stop;
+unsigned long start_time,t,time_stop,tt;
 int second,minute,hour,secondt,minutet,hourt;
 void sleep(){
   if(n==16){
@@ -30,9 +30,10 @@ void awake(){
   }
 void Using(){
   start_time=micros();
-  second=(start_time/1000000)%60;
-  minute=(start_time/1000000)/60;
-  hour=minute/60;
+  tt=(start_time/1000000);
+  second=tt%60;
+  minute=(tt/60)%60;
+  hour=tt/3600;
   lcd.setCursor(0,1);
   lcd.print("for "); 
   lcd.print(hour);  
@@ -53,8 +54,8 @@ void Time(){
   t=start_time-time_stop;
   int s=(t/1000000)-10;
   secondt=s%60;
-  minutet=s/60;
-  hourt=minutet/60;
+  minutet=(s/60)%60;
+  hourt=s/3600;
   if(s>=0){
     lcd.setCursor(0,0);
     lcd.print(hourt);  
