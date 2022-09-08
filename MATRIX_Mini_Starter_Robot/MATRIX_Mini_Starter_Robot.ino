@@ -1,13 +1,3 @@
-
-/*
-  Mini Motor Example
- * Description: Demonstrates how to use Motor Commands.
- *   
- * Author:      Frason Fan
- * modified 16 Nov 2020
- *
- * www.matrixrobotics.com
- */
 #include <MatrixMini.h>
 
 void setup() {
@@ -18,8 +8,6 @@ void setup() {
   Mini.M1.set(0);
   Mini.M2.set(0);
   delay(2000);
-  Mini.M1.set(90);
-  Mini.M2.set(90);
 }
 
 void loop() {
